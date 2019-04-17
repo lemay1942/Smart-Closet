@@ -9,35 +9,32 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Intent splashIntent = new Intent(this, SplashActivity.class);
-        startActivity(splashIntent);
+        setContentView(R.layout.activity_main2);
 
-        Button strBtn = (Button)findViewById(R.id.strBtn);
+        final Intent nextIntent = new Intent(this, Main3Activity.class);
 
-        final Intent strInten = new Intent(this, Main2Activity.class);
+        Button nextButton = (Button)findViewById(R.id.nextButton);
 
-        strBtn.setOnClickListener(new View.OnClickListener() {
+        nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(strInten);
+                startActivity(nextIntent);
                 finish();
             }
         });
-
-
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         //빽(취소)키가 눌렸을때 종료여부를 묻는 다이얼로그 띄움
         if((keyCode == KeyEvent.KEYCODE_BACK)) {
-            AlertDialog.Builder d = new AlertDialog.Builder(MainActivity.this);
+            AlertDialog.Builder d = new AlertDialog.Builder(Main2Activity.this);
             d.setTitle("종료여부");
             d.setMessage("정말 종료 하시겠습니꺄?");
             d.setIcon(R.drawable.teamicon);
@@ -46,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     // TODO Auto-generated method stub
-                    MainActivity.this.finish();
+                    Main2Activity.this.finish();
                 }
             });
 
