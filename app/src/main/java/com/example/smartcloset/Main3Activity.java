@@ -4,14 +4,63 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
+import android.widget.LinearLayout;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main3Activity extends AppCompatActivity {
+
+    private RecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+
+        init();
+
+        getData();
+
+    }
+
+    private void init() {
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        adapter = new RecyclerAdapter();
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void getData(){
+        List<String> listTitle = Arrays.asList("양호", "위험", "양호", "위험", "위험", "양호");
+        List<String> listContent = Arrays.asList(
+                "청바지", "코트", "가죽점퍼", "티셔츠", "양말", "수건"
+        );
+        List<Integer> listResId = Arrays.asList(
+                R.drawable.teamicon,
+                R.drawable.splashimage,
+                R.drawable.teamicon,
+                R.drawable.splashimage,
+                R.drawable.teamicon,
+                R.drawable.splashimage
+        );
+        for(int i = 0; i < listTitle.size(); i++){
+            Data data = new Data();
+            data.setTitle(listTitle.get(i));
+            data.setContent(listContent.get(i));
+            data.setResId(listResId.get(i));
+
+            adapter.additem(data);
+        }
+
+        adapter.notifyDataSetChanged();
     }
 
     @Override
