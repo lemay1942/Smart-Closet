@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class Main3Activity extends AppCompatActivity {
 
@@ -28,6 +29,7 @@ public class Main3Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
         Button addButton = (Button)findViewById(R.id.addButton);
+        Button reButton = (Button)findViewById(R.id.reButton);
         dbbasic = new Stop_DBBasic();
         helperlogin = helperlogin.getinstence(getApplicationContext());
 
@@ -43,6 +45,15 @@ public class Main3Activity extends AppCompatActivity {
         init();
 
         getData();
+
+        reButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                init();
+
+                getData();
+            }
+        });
 
     }
 
@@ -65,10 +76,12 @@ public class Main3Activity extends AppCompatActivity {
         Cursor cur = dbbasic.select(new Stop_DBLogin(helperlogin.getReadableDatabase()), "select * from Clothe");
         for(int i = 0; i < cur.getCount(); i++){
             Data data = new Data();
+            Random random = new Random();
             cur.moveToNext();
             data.setTitle(cur.getString(1));
             data.setContent(cur.getString(2));
-            data.setResId(listResId.get(2));
+            data.setinf(cur.getString(3));
+            data.setResId(listResId.get(random.nextInt(3)));
 
             adapter.additem(data);
         }
