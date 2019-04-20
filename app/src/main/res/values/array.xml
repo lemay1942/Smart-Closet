@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="구분">
+        <item>면</item>
+        <item>폴리에스테르</item>
+        <item>레이온</item>
+        <item>기모</item>
+        <item>아크릴</item>
+        <item>올</item>
+        <item>캐시미어</item>
+        <item>앙고라</item>
+        <item>나일론</item>
+    </string-array>
+</resources>
