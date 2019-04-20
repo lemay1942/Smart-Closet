@@ -24,7 +24,7 @@ public class AddActivity extends AppCompatActivity {
 
         Spinner spinner = (Spinner)findViewById(R.id.spinner);
         final EditText clothText = (EditText)findViewById(R.id.clothText);
-        EditText infText = (EditText)findViewById(R.id.infText);
+        final EditText infText = (EditText)findViewById(R.id.infText);
         Button cancleButton = (Button)findViewById(R.id.cancleButton);
         Button inputButton = (Button)findViewById(R.id.inputButton);
 
@@ -56,6 +56,8 @@ public class AddActivity extends AppCompatActivity {
         inputButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                clothName = clothText.getText().toString();
+                moreInf = infText.getText().toString();
                 if(substitute.equals("") || clothText.equals("") || moreInf.equals("")){
                     Toast.makeText(AddActivity.this, "정보가 제대로 입력되지 않았습니다.", Toast.LENGTH_LONG).show(); //주석
                 }else {
