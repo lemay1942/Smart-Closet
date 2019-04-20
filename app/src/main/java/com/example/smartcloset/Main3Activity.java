@@ -2,7 +2,6 @@ package com.example.smartcloset;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,16 +19,12 @@ import java.util.List;
 public class Main3Activity extends AppCompatActivity {
 
     private RecyclerAdapter adapter;
-    private Stop_DBHelper helperlogin;
-    private Stop_DBBasic dbbasic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
         Button addButton = (Button)findViewById(R.id.addButton);
-        dbbasic = new Stop_DBBasic();
-        helperlogin = helperlogin.getinstence(getApplicationContext());
 
         final Intent addIntent = new Intent(this, AddActivity.class);
 
@@ -57,18 +52,23 @@ public class Main3Activity extends AppCompatActivity {
     }
 
     private void getData(){
-        List<Integer> listResId = Arrays.asList(
-                R.drawable.sad,
-                R.drawable.surprised,
-                R.drawable.happy
+        List<String> listTitle = Arrays.asList("양호", "위험", "양호", "위험", "위험", "양호");
+        List<String> listContent = Arrays.asList(
+                "청바지", "코트", "가죽점퍼", "티셔츠", "양말", "수건"
         );
-        Cursor cur = dbbasic.select(new Stop_DBLogin(helperlogin.getReadableDatabase()), "select * from Clothe");
-        for(int i = 0; i < cur.getCount(); i++){
+        List<Integer> listResId = Arrays.asList(
+                R.drawable.teamicon,
+                R.drawable.splashimage,
+                R.drawable.teamicon,
+                R.drawable.splashimage,
+                R.drawable.teamicon,
+                R.drawable.splashimage
+        );
+        for(int i = 0; i < listTitle.size(); i++){
             Data data = new Data();
-            cur.moveToNext();
-            data.setTitle(cur.getString(1));
-            data.setContent(cur.getString(2));
-            data.setResId(listResId.get(2));
+            data.setTitle(listTitle.get(i));
+            data.setContent(listContent.get(i));
+            data.setResId(listResId.get(i));
 
             adapter.additem(data);
         }

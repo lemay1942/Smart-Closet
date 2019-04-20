@@ -1,60 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linearItem"
-    android:layout_width="match_parent"
+    android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    android:background="@android:color/white"
+    android:padding="8dp"
     android:gravity="center_vertical"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:layout_marginBottom="8dp"
+    android:background="@android:color/white">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="TITLE"
+            android:textSize="15sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:includeFontPadding="false"
-                android:text="TITLE"
-                android:textColor="@android:color/black"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:includeFontPadding="false"
-                android:text="content"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="13sp" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@mipmap/ic_launcher" />
-
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="content"
+            android:textSize="13sp"
+            android:textColor="@android:color/darker_gray"/>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:animateLayoutChanges="true"
-        android:text="TextView" />
-
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/ic_launcher"/>
 </LinearLayout>
