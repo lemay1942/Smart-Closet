@@ -16,11 +16,15 @@ public class AddActivity extends AppCompatActivity {
     String substitute = "";
     String clothName = "";
     String moreInf = "";
+    private Stop_DBHelper helperlogin;
+    private Stop_DBBasic dbbasic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+        dbbasic = new Stop_DBBasic();
+        helperlogin = helperlogin.getinstence(getApplicationContext());
 
         Spinner spinner = (Spinner)findViewById(R.id.spinner);
         final EditText clothText = (EditText)findViewById(R.id.clothText);
@@ -61,6 +65,8 @@ public class AddActivity extends AppCompatActivity {
                 if(substitute.equals("") || clothText.equals("") || moreInf.equals("")){
                     Toast.makeText(AddActivity.this, "정보가 제대로 입력되지 않았습니다.", Toast.LENGTH_LONG).show(); //주석
                 }else {
+                    dbbasic.insert(new Stop_DBLogin(helperlogin.getWritableDatabase()),
+                            "insert into Clothe values(null,'" + clothName + "','" + substitute + "','" + moreInf + "');");
                     startActivity(inputIntent);
                     finish();
                 }
