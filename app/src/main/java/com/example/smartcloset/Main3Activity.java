@@ -57,12 +57,12 @@ public class Main3Activity extends AppCompatActivity {
                 "청바지", "코트", "가죽점퍼", "티셔츠", "양말", "수건"
         );
         List<Integer> listResId = Arrays.asList(
-                R.drawable.teamicon,
-                R.drawable.splashimage,
-                R.drawable.teamicon,
-                R.drawable.splashimage,
-                R.drawable.teamicon,
-                R.drawable.splashimage
+                R.drawable.sad,
+                R.drawable.surprised,
+                R.drawable.happy,
+                R.drawable.sad,
+                R.drawable.surprised,
+                R.drawable.happy
         );
         for(int i = 0; i < listTitle.size(); i++){
             Data data = new Data();
