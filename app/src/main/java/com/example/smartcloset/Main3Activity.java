@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,7 @@ public class Main3Activity extends AppCompatActivity {
     private RecyclerAdapter adapter;
     private Stop_DBHelper helperlogin;
     private Stop_DBBasic dbbasic;
-
+    Toolbar myToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,10 @@ public class Main3Activity extends AppCompatActivity {
         Button addButton = (Button)findViewById(R.id.addButton);
         dbbasic = new Stop_DBBasic();
         helperlogin = helperlogin.getinstence(getApplicationContext());
+        myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_dehaze_black_24dp);
 
         final Intent addIntent = new Intent(this, AddActivity.class);
 
