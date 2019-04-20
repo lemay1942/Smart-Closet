@@ -57,7 +57,7 @@ public class AddActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(substitute.equals("") || clothText.equals("") || moreInf.equals("")){
-                    Toast.makeText(AddActivity.this, "정보가 제대로 입력되지 않았습니다.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddActivity.this, "정보가 제대로 입력되지 않았습니다.", Toast.LENGTH_LONG).show(); //주석
                 }else {
                     startActivity(inputIntent);
                     finish();
