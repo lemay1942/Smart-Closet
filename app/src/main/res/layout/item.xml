@@ -55,6 +55,9 @@
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:animateLayoutChanges="true"
-        android:text="TextView" />
+        android:text="TextView"
+        android:background="#1001"
+        android:textAlignment="center"
+        android:textSize="18sp" />
 
 </LinearLayout>

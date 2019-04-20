@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -16,20 +17,26 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class Main3Activity extends AppCompatActivity {
 
     private RecyclerAdapter adapter;
     private Stop_DBHelper helperlogin;
     private Stop_DBBasic dbbasic;
-
+    Toolbar myToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
         Button addButton = (Button)findViewById(R.id.addButton);
+        Button reButton = (Button)findViewById(R.id.reButton);
         dbbasic = new Stop_DBBasic();
         helperlogin = helperlogin.getinstence(getApplicationContext());
+        myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_dehaze_black_24dp);
 
         final Intent addIntent = new Intent(this, AddActivity.class);
 
@@ -43,6 +50,15 @@ public class Main3Activity extends AppCompatActivity {
         init();
 
         getData();
+
+        reButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                init();
+
+                getData();
+            }
+        });
 
     }
 
@@ -65,10 +81,12 @@ public class Main3Activity extends AppCompatActivity {
         Cursor cur = dbbasic.select(new Stop_DBLogin(helperlogin.getReadableDatabase()), "select * from Clothe"); //주석주석
         for(int i = 0; i < cur.getCount(); i++){
             Data data = new Data();
+            Random random = new Random();
             cur.moveToNext();
             data.setTitle(cur.getString(1));
             data.setContent(cur.getString(2));
-            data.setResId(listResId.get(2));
+            data.setinf(cur.getString(3));
+            data.setResId(listResId.get(random.nextInt(3)));
 
             adapter.additem(data);
         }
