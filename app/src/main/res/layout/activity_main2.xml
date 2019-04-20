@@ -17,6 +17,7 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
     <TextView
+        android:fontFamily="@font/bing"
         android:id="@+id/titleText8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,6 +49,7 @@
         app:layout_constraintVertical_bias="0.041">
 
         <TextView
+            android:fontFamily="@font/bing"
             android:id="@+id/infText1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,6 +57,7 @@
             android:textSize="24sp" />
 
         <TextView
+            android:fontFamily="@font/bing"
             android:id="@+id/infText2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,6 +65,7 @@
             android:textSize="24sp" />
 
         <TextView
+            android:fontFamily="@font/bing"
             android:id="@+id/infText3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,6 +74,7 @@
     </LinearLayout>
 
     <TextView
+        android:fontFamily="@font/bing"
         android:id="@+id/titleText4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -86,6 +91,7 @@
         app:layout_constraintVertical_bias="0.546" />
 
     <Button
+        android:fontFamily="@font/bing"
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
