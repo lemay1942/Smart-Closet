@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AddActivity extends AppCompatActivity {
     String substitute = "";
@@ -22,7 +23,7 @@ public class AddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add);
 
         Spinner spinner = (Spinner)findViewById(R.id.spinner);
-        EditText clothText = (EditText)findViewById(R.id.clothText);
+        final EditText clothText = (EditText)findViewById(R.id.clothText);
         EditText infText = (EditText)findViewById(R.id.infText);
         Button cancleButton = (Button)findViewById(R.id.cancleButton);
         Button inputButton = (Button)findViewById(R.id.inputButton);
@@ -55,8 +56,12 @@ public class AddActivity extends AppCompatActivity {
         inputButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(inputIntent);
-                finish();
+                if(substitute.equals("") || clothText.equals("") || moreInf.equals("")){
+                    Toast.makeText(AddActivity.this, "정보가 제대로 입력되지 않았습니다.", Toast.LENGTH_LONG).show();
+                }else {
+                    startActivity(inputIntent);
+                    finish();
+                }
             }
         });
     }
