@@ -66,7 +66,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
 
             textView1.setText(data.getTitle());
             textView2.setText(data.getContent());
-            textView3.setText(data.getContent());
+            textView3.setText(data.getinf());
             imageView.setImageResource(data.getResId());
 
             changeVisibility(selectedItems.get(position));
@@ -80,9 +80,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
 
         @Override
         public void onClick(View v) {
+
             switch (v.getId()) {
                 case R.id.linearItem:
-                    Toast.makeText(context, "TITLE : " + data.getTitle() + "\nContent : " + data.getContent(), Toast.LENGTH_SHORT).show();
+                    if(data.getResId() == R.drawable.sad){
+                        Toast.makeText(context, "옷 종류 : " + data.getTitle() + "\n재질 : " + data.getContent() + "\n상태 : 위험" , Toast.LENGTH_SHORT).show();
+                    } else if(data.getResId() == R.drawable.surprised){
+                        Toast.makeText(context, "옷 종류 : " + data.getTitle() + "\n재질 : " + data.getContent() + "\n상태 : 주의" , Toast.LENGTH_SHORT).show();
+                    } else if(data.getResId() == R.drawable.happy){
+                        Toast.makeText(context, "옷 종류 : " + data.getTitle() + "\n재질 : " + data.getContent() + "\n상태 : 양호" , Toast.LENGTH_SHORT).show();
+                    }
+
                     if(selectedItems.get(position)){
                         selectedItems.delete(position);
                     }else {
@@ -100,9 +108,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
                     break;
                 case R.id.textView2:
                     Toast.makeText(context, data.getContent(), Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.imageView:
-                    Toast.makeText(context, data.getTitle() + " 이미지 입니다.", Toast.LENGTH_SHORT).show();
                     break;
             }
         }
