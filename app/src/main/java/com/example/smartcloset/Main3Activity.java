@@ -78,7 +78,7 @@ public class Main3Activity extends AppCompatActivity {
                 R.drawable.surprised,
                 R.drawable.happy
         );
-        Cursor cur = dbbasic.select(new Stop_DBLogin(helperlogin.getReadableDatabase()), "select * from Clothe");
+        Cursor cur = dbbasic.select(new Stop_DBLogin(helperlogin.getReadableDatabase()), "select * from Clothe"); //주석주석
         for(int i = 0; i < cur.getCount(); i++){
             Data data = new Data();
             Random random = new Random();
